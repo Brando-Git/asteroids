@@ -14,6 +14,9 @@ def main():
     # Initializations
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    background = pygame.image.load("pluto.png").convert()
+    background_rect = background.get_rect()
+    background_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
     gameclock = pygame.time.Clock()
     dt = 0
     asteroids = pygame.sprite.Group()
@@ -37,6 +40,7 @@ def main():
                 return
             
         screen.fill("black")
+        screen.blit(background, background_rect)   
         updatable.update(dt)
         #check for collisions
         for asteroid in asteroids:
